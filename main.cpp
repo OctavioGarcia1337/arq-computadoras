@@ -11,11 +11,114 @@
 #endif
 #include <cstdlib>
 
+
 #define ENTER 13
 #define BACKSPACE 8
 #define INTENTOS 3
 
 using namespace std;
+
+void delay(int time)
+{
+   int i;
+   unsigned int j;
+   for(i=time; i>0; --i) /* repeat specified number of times */
+      for(j=0; j<65535; ++j);
+}
+
+void disp_binary (int i)
+{
+   int t;
+   for(t=128; t>0; t=t/2)
+      if(i&t) printf("*");
+      else printf("-");
+   printf("\n");
+}
+
+void fantastic_car(){
+    /*
+    string secuencia[]={"1000000","01000000","00100000","00010000","00000100","00000010","00000001"};
+    for( int x=0; x<8; x++ ){
+        cout<<secuencia[x];
+        Sleep(1000);
+        system("cls");
+    }*/
+    
+    for( int x=0; x<8; x++ ){
+        for( int i=0; i<8; i++ ){
+            if (x==i)
+            {
+                cout << "*"; 
+            }
+            else{
+                cout << "-";
+            }
+        }
+        delay(1000); 
+        system("cls");
+        //system("clear");
+    }
+    for( int x=8; x>0; x-- ){
+        for( int i=0; i<8; i++){
+            if (x==i) {
+                cout << "*";  
+            }
+            else{
+                cout << "-";
+            }        
+        }
+        delay(5000);
+        system("cls");
+    }
+}
+
+/*
+void cargaerrada(){
+    for( int x=0; x<8; x++ ){
+        for( int i=0; i<8; i++){
+            
+}}}*/
+
+/*
+void aceleradordeparticulas{
+
+for( int x=8; x>0; x-- ){
+        for( int i=0; i<8; i++){
+
+}}}*/
+
+
+void choque(){
+   string secuencia[]={"10000001","01000010","00100100","00011000","00011000","00100100","01000010","10000001"};
+    for( int x=0; x<8; x++ ){
+        cout<<secuencia[x];
+        Sleep(500);
+        system("cls");
+    }
+/* 
+    cout<<"ejecucion 2";
+    Sleep(1000);
+    system("cls");
+    
+    for( int x=0; x<8; x++ ){
+        for( int i=0; i<8; i++ ){
+            if (x==i || i==7-x){
+                cout << "*"; 
+            }
+            else{
+                cout << "-";
+            }   
+        }
+        delay(5000);
+        system("cls");
+    }*/
+}
+
+
+
+
+
+
 
 int main()
 {
@@ -29,7 +132,6 @@ int main()
     // Se añaden claves a los usuario.
     claves.push_back("1974");
     claves.push_back("admin");
-
 
     string usuario, password;
 
@@ -51,7 +153,6 @@ int main()
         caracter = getch();
 
         password = "";
-
         while (caracter != ENTER)
         {
 
@@ -107,17 +208,38 @@ int main()
             system("cls");
             cout << "\n\n\t----- Menu -----" << endl;
             cout << "\n\n\t1 - HELLO WORLD " << endl;
+            cout << "\n\n\t2 - FANTASTIC CAR " << endl;
+            cout << "\n\n\t3 - CRASH " << endl;
             cout << "\n\n\t0 - EXIT " << endl;
             cin  >> option;
            
            
-            switch (option)
+            switch (option) 
             {
             case 1:
                 system("cls");
                 cout<<"\n\n\tHello World!."<<endl;
                 cout<<"\n\n\tFin de ejecucion."<<endl;
-                Sleep(5000);	
+                Sleep(1000);	
+                break;
+
+            case 2:
+                system("cls");
+                for (int i = 0; i < 3; i++){
+                    fantastic_car();
+                }
+                cout<<"\n\n\tFin de ejecucion."<<endl;
+                Sleep(1000);	
+                break;
+
+            case 3:
+                system("cls");
+                 for (int i = 0; i < 3; i++){
+                    choque();
+                }
+                
+                cout<<"\n\n\tFin de ejecucion."<<endl;
+                Sleep(1000);	
                 break;
             
             default:
@@ -129,4 +251,4 @@ int main()
         }while(option != 0);
     }
 }
-
+ 
