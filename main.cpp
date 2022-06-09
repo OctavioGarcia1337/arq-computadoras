@@ -72,27 +72,68 @@ void fantastic_car(){
     }
 }
 
-/*
-void cargaerrada(){
-    for( int x=0; x<8; x++ ){
+
+void Loadbarerror(){
+    for( int v=0; v<5; v++ ){
+        for( int x=0; x<8; x++ ){
+            for( int i=0; i<8; i++ ){
+                if (x+v>=i&& i>=x)
+                {
+                    cout << "*"; 
+                
+                }
+                else{
+                    cout << "-";
+                }
+    
+    
+            }    
+            Sleep(500); 
+            system("cls");
+        }
+    }
+}
+
+void BouncingBall(){
+string secuencia[]={"10000000","01000000","00100000","00010000","00001000","00000100","00000010","00000001"};
+int x=0; 
+while( x<8){    
+    for( int i=x; i<8; i++){
+        cout<<secuencia[i];
+        Sleep(200);
+        system("cls");
+    }
+    x=x+2;
+    for( int i=8; i>=x; i--){
+        cout<<secuencia[i];
+        Sleep(200);
+        system("cls");
+    }
+}}
+void aceleradordeparticulas(){
+for(  int v=50; v>0; v--){
+    for( int x=0; x<8; x++){
         for( int i=0; i<8; i++){
-            
-}}}*/
-
-/*
-void aceleradordeparticulas{
-
-for( int x=8; x>0; x-- ){
-        for( int i=0; i<8; i++){
-
-}}}*/
+            if (x=i)
+                {
+                cout << "*"; 
+                }
+                else{
+                cout << "-";
+                }
+        }
+        Sleep(v*100); 
+        system("cls");
+        }
+    }
+}
 
 
 void choque(){
-   string secuencia[]={"10000001","01000010","00100100","00011000","00011000","00100100","01000010","10000001"};
+   string secuencia[]={"0000001","01000010","00100100","00011000","00011000","00100100","01000010","10000001"};
     for( int x=0; x<8; x++ ){
         cout<<secuencia[x];
-        Sleep(500);
+        Sleep(200);
         system("cls");
     }
 /* 
@@ -210,6 +251,9 @@ int main()
             cout << "\n\n\t1 - HELLO WORLD " << endl;
             cout << "\n\n\t2 - FANTASTIC CAR " << endl;
             cout << "\n\n\t3 - CRASH " << endl;
+            cout << "\n\n\t4 - Load Bar Error" << endl;
+            cout << "\n\n\t5 - Acelerador de Particulas " << endl;
+            cout << "\n\n\t6 - Bouncing Ball " << endl;
             cout << "\n\n\t0 - EXIT " << endl;
             cin  >> option;
            
@@ -238,10 +282,36 @@ int main()
                     choque();
                 }
                 
-                cout<<"\n\n\tFin de ejecucion."<<endl;
+                cout<<"\n\n\t Fin de ejecucion."<<endl;
                 Sleep(1000);	
                 break;
-            
+            case 4:
+                system("cls");
+                 for (int i = 0; i < 3; i++){
+                    Loadbarerror();
+                }
+                
+                cout<<"\n\n\t Fin de ejecucion."<<endl;
+                Sleep(1000);	
+                break;
+            case 5:
+                system("cls");
+                 for (int i = 0; i < 3; i++){
+                    aceleradordeparticulas();
+                }
+                
+                cout<<"\n\n\t Fin de ejecucion."<<endl;
+                Sleep(1000);	
+                break;
+            case 6:
+                system("cls");
+                 for (int i = 0; i < 3; i++){
+                    BouncingBall();
+                }
+                
+                cout<<"\n\n\t Fin de ejecucion."<<endl;
+                Sleep(1000);	
+                break;
             default:
                 system("cls");
                 cout<<"\n\n\tLa opcion "<< option;
