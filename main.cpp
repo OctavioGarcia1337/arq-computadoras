@@ -74,7 +74,7 @@ void fantastic_car(){
 
 
 void Loadbarerror(){
-    for( int v=0; v<5; v++ ){
+    for( int v=0; v<6; v++ ){
         for( int x=0; x<8; x++ ){
             for( int i=0; i<8; i++ ){
                 if (x+v>=i&& i>=x)
@@ -96,25 +96,24 @@ void Loadbarerror(){
 
 void BouncingBall(){
 string secuencia[]={"10000000","01000000","00100000","00010000","00001000","00000100","00000010","00000001"};
-int x=0; 
-while( x<8){    
+
+for( int x=0; x<8; x=x+2){  
     for( int i=x; i<8; i++){
         cout<<secuencia[i];
         Sleep(200);
         system("cls");
-    }
-    x=x+2;
-    for( int i=8; i>=x; i--){
-        cout<<secuencia[i];
+    } 
+    for( int z=7; z>=x+2; z=z-1){
+        cout<<secuencia[z];
         Sleep(200);
         system("cls");
     }
 }}
 void aceleradordeparticulas(){
-for(  int v=50; v>0; v--){
+for(  int v=200; v>0; v=v-50){
     for( int x=0; x<8; x++){
         for( int i=0; i<8; i++){
-            if (x=i)
+            if (x==i)
                 {
                 cout << "*"; 
                 }
@@ -122,7 +121,7 @@ for(  int v=50; v>0; v--){
                 cout << "-";
                 }
         }
-        Sleep(v*100); 
+        Sleep(v); 
         system("cls");
         }
     }
@@ -251,7 +250,7 @@ int main()
             cout << "\n\n\t1 - HELLO WORLD " << endl;
             cout << "\n\n\t2 - FANTASTIC CAR " << endl;
             cout << "\n\n\t3 - CRASH " << endl;
-            cout << "\n\n\t4 - Load Bar Error" << endl;
+            cout << "\n\n\t4 - La Konga" << endl;
             cout << "\n\n\t5 - Acelerador de Particulas " << endl;
             cout << "\n\n\t6 - Bouncing Ball " << endl;
             cout << "\n\n\t0 - EXIT " << endl;
