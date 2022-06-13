@@ -1,0 +1,66 @@
+				MOV		r0, #2 ; Me pasan 2 de velocidad
+				MOV		SP, #pilaptr
+				BL		OlaHumana
+				end
+
+OlaHumana
+				STMFD	SP!, {r4, r5, r6, r7, LR}
+				MOV		r6, r0 ; Salvo r0 que me lo pasaron como parametro (velocidad)
+				MOV		r4, #0xE0 ; 1110 0000
+				MOV		r5, #8 ; contador
+
+ForOlaHumana1
+				MOV		r0, r4 ; preparo r0 para mandarlo como par�metro para Display
+				BL		Display
+				MOV		r0, r6 ; Preparo a r0 para mandarlo como parametro de retardo
+				BL		Retardo
+				;		MOV r0, "cls" por si la funcion system usara par�metros
+				BL		SystemCLS
+				MOV		r4, r4, LSR #1 ; Multiplico en 2 r4 (desplazo logico )
+				SUBS		r5, r5, #1
+				BNE		ForOlaHumana1
+				
+				MOV		r4, #0x07 ; 0000 0111
+				MOV		r5, #6 ; contador
+
+ForOlaHumana2
+				MOV		r0, r4 ; preparo r0 para mandarlo como par�metro para Display
+				BL		Display
+				MOV		r0, r6 ; Preparo a r0 para mandarlo como parametro de retardo
+				BL		Retardo
+				;		MOV r0, "cls" por si la funcion system usara par�metros
+				BL		SystemCLS
+				MOV		r4, r4, LSL #1 ; Multiplico en 2 r4 (desplazo logico )
+				SUBS		r5, r5, #1
+				BNE		ForOlaHumana2
+				BEQ		Termino
+								
+Display
+				;STMFD	SP!, {r4, r5, r6, r7}
+				;MOV		r7, #0xE0 ; 1110 0000
+				;MOV		r4, r0 	; Me devuelvo a r4 lo que tengo en r0 porque ahora uso r0 para mostrar
+
+forDisplay
+				;TST		r4, r7	; AND con actualizacion de Banderas
+				;MOVEQ	r0, #0x5F ; equivalente a 95 (_ en ASCII)
+				;MOVNE	r0, #0x2A ; equivalente a 42 (* en ASCII)
+				;MOVS	r7, r7, LSR #1 ; Divido en 2 r7 (desplazo logico )
+				;BNE		forDisplay
+				;LDMFD	SP!, {r4, r5, r6, r7} ; recupero valores
+				MOV		PC, LR
+			
+Retardo
+				;SUBS	r0,r0, #1	; Resto (a--;)
+				;BNE		Retardo
+				MOV		PC,LR
+				
+SystemCLS
+				;		Simulo la limpieza de pantalla
+				MOV		PC,LR
+				
+Termino
+				LDMFD	SP!, {r4, r5, r6, r7, LR} ; recupero valores
+				MOV		PC, LR
+				
+pila				FILL		40
+pilaptr			DCB		1
