@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <conio.h> // getch
+#include <Windows.h>
 #include <vector>  // estructura de datos para guardar los usuarios.
 
 // Se setean variables globales que se utilizaran durante todo el programa.
@@ -32,102 +33,152 @@ void printBin (unsigned char dato){
 }
 
 // Luces del auto fantastico
-void fantastic_car(){
+void Fantastic_Car(){ 
+    unsigned long int vel = 150000000;   
+    unsigned int bit = 0x80;
+    while(1){
+        for (int i = 0; i < 8; ++i) {
+            cout<<"Showing >  Fantastic Car  <"<<endl;
+            cout<<"Salir   >      ESC        <"<<endl;
+            cout<<"Sleep   >  "<<vel<<"      <"<<endl;
+            printBin(bit);
+            bit >>= 1;
+            sleep(vel);
+            system("cls");
+
+            if((vel - 5000000) > 1000000){ if(GetAsyncKeyState(VK_UP) & 0x0001){vel -= 5000000;}}
+            
+            if(GetAsyncKeyState(VK_DOWN) & 0x0001){vel += 5000000;}
+            
+            if(GetAsyncKeyState(VK_ESCAPE) & 0x0001){return;}
+        }
+        
+        bit = 0x02;
     
-    for( int x=0; x<8; x++ ){
-        for( int i=0; i<8; i++ ){
-            if (x==i)
-            {
-               std::cout << "*"; 
-            }
-            else{
-                std::cout << "-";
-            }
+        for (int i = 0; i < 6; ++i) {
+            cout<<"Showing >  Fantastic Car  <"<<endl;
+            cout<<"Salir   >      ESC        <"<<endl;
+            cout<<"Sleep   >  "<<vel<<"      <"<<endl;
+            printBin(bit);
+            bit <<= 1;
+            sleep(vel);
+            system("cls");
+
+            if ((vel - 5000000) > 1000000){ if(GetAsyncKeyState(VK_UP) & 0x0001){vel -= 5000000;}}
+
+            if(GetAsyncKeyState(VK_DOWN) & 0x0001){vel += 5000000;}
+
+            if(GetAsyncKeyState(VK_ESCAPE) & 0x0001){return;}
         }
-        sleep(5000000);
-        system("cls");
-        //system("clear");
-    }
-    for( int x=8; x>0; x-- ){
-        for( int i=0; i<8; i++){
-            if (x==i) {
-                std::cout << "*";  
-            }
-            else{
-                std::cout << "-";
-            }        
-        }
-        sleep(5000000);
-        system("cls");
-    }
+    }   
 }
 
-//Barra de carga que falla al 99%, es un meme de internet.
-void Loadbarerror(){
-    for( int v=0; v<6; v++ ){
-        for( int x=0; x<8; x++ ){
-            for( int i=0; i<8; i++ ){
-                if (x+v>=i&& i>=x)
-                {
-                    std::cout << "*"; 
-                
+
+//Baile de la Konga
+void LaKonga(){
+    unsigned long int vel = 150000000; 
+    while(1){
+        for( int v=0; v<6; v++ ){
+            for( int x=0; x<8; x++ ){
+                    cout<<"Showing >    La Konga    <"<<endl;
+                    cout<<"Salir   >      ESC       <"<<endl;
+                    cout<<"Sleep   > "<<vel<<"      <"<<endl;
+                for( int i=0; i<8; i++ ){
+                    if (x+v>=i&& i>=x)
+                    {
+                        std::cout << "*"; 
+                    
+                    }
+                    else{
+                        std::cout << "-";
+                    }
                 }
-                else{
-                    std::cout << "-";
-                }
-            }    
-            sleep(5000000); 
-            system("cls");
+                sleep(vel);   
+                system("cls");
+            if((vel - 5000000) > 1000000){ if(GetAsyncKeyState(VK_UP) & 0x0001){vel -= 5000000;}}
+            
+            if(GetAsyncKeyState(VK_DOWN) & 0x0001){vel += 5000000;}
+            
+            if(GetAsyncKeyState(VK_ESCAPE) & 0x0001){return;}
+            }
         }
     }
 }
 
 //Pelota rebotando, esta experiencia deberia hacerce con las luces en vertical.
 void BouncingBall(){
+unsigned long int vel = 150000000;
 unsigned long int secuencia[]={0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
-    for( int x=0; x<8; x=x+2){  
-        for( int i=x; i<8; i++){
-            printBin(secuencia[i]);
-            sleep(5000000);
-            system("cls");
-        } 
-        for( int z=7; z>=x+2; z=z-1){
-            printBin(secuencia[z]);
-            sleep(5000000);
-            system("cls");
+    while(1){
+        for( int x=0; x<8; x=x+2){  
+            for( int i=x; i<8; i++){
+                cout<<"Showing >  BouncingBall  <"<<endl;
+                cout<<"Salir   >      ESC       <"<<endl;
+                cout<<"Sleep   > "<<vel<<"      <"<<endl;
+                printBin(secuencia[i]);  // BL printBin
+                sleep(vel);          // BL sleep
+                system("cls");
+                if((vel - 5000000) > 1000000){if(GetAsyncKeyState(VK_UP) & 0x0001){vel -= 5000000;}}
+                if(GetAsyncKeyState(VK_DOWN) & 0x0001){vel += 5000000;}
+                if(GetAsyncKeyState(VK_ESCAPE) & 0x0001){return;}
+            } 
+            for( int z=7; z>=x+2; z=z-1){
+                cout<<"Showing >  BouncingBall  <"<<endl;
+                cout<<"Salir   >      ESC       <"<<endl;
+                cout<<"Sleep   > "<<vel<<"      <"<<endl;
+                printBin(secuencia[z]);
+                sleep(vel);
+                system("cls");
+                if((vel - 5000000) > 1000000){if(GetAsyncKeyState(VK_UP) & 0x0001){vel -= 5000000;}}
+                if(GetAsyncKeyState(VK_DOWN) & 0x0001){vel += 5000000;}
+                if(GetAsyncKeyState(VK_ESCAPE) & 0x0001){return;}
+            }
         }
     }
 }
 
 //Acelerador de particulas, se puede ver como va tomando velocidad.
-void aceleradordeparticulas(){
-for(  int v=200; v>0; v=v-50){
-    for( int x=0; x<8; x++){
-        for( int i=0; i<8; i++){
-            if (x==i)
-                {
-                std::cout << "*"; 
-                }
-                else{
-                std::cout << "-";
-                }
-        }
-        sleep(v); 
-        system("cls");
+void AceleradorDeParticulas(){
+unsigned long int vel = 150000000;
+    while(1){
+        for( int x=0; x<8; x++){
+            cout<<"Showing > AceleradorDeParticulas <"<<endl;
+            cout<<"Salir   >          ESC           <"<<endl;
+            cout<<"Sleep   >     "<<vel<<"          <" <<endl;
+            for( int i=0; i<8; i++){
+                if (x==i){std::cout << "*"; } else{std::cout << "-";}
+            }
+            sleep(vel); 
+            system("cls");
+            if((vel - 5000000) > 1000000){if(GetAsyncKeyState(VK_UP) & 0x0001){vel -= 5000000;}}
+            if(GetAsyncKeyState(VK_DOWN) & 0x0001){vel += 5000000;}
+            if(GetAsyncKeyState(VK_ESCAPE) & 0x0001){return;}
         }
     }
+
 }
 
 //Experiencia de choque, (realmente los unos se atraviesan.)
-void choque(){           
+void Crash(){      
+
+    unsigned long int vel = 150000000;   
     unsigned long int secuencia[]={0x81,0x42,0x24,0x18,0x18,0x24,0x42,0x81};
 
-    for( int x=0; x<8; x++ ){
-        printBin(secuencia[x]);
-        sleep(5000000);
-        system("cls");
+    while(1){
+        for (int i = 0; i < 7; ++i) {
+            cout<<"Showing >     Crash     <"<<endl;
+            cout<<"Salir   >      ESC      <"<<endl;
+            cout<<"Sleep   > "<<vel<<"     <" <<endl;
+            printBin(secuencia[i]);
+            sleep(vel);
+            system("cls");
+            if ((vel - 5000000) > 1000000){if(GetAsyncKeyState(VK_UP) & 0x0001){vel -= 5000000;} }
+            if(GetAsyncKeyState(VK_DOWN) & 0x0001){vel += 5000000;}
+            if(GetAsyncKeyState(VK_ESCAPE) & 0x0001){return;}
+        }
     }
 }
+
 
 int main(){
 
@@ -236,7 +287,7 @@ int main(){
             std::cout << "\n\n\t 5 - ACELERADOR DE PARTICULAS" << endl;
             std::cout << "\n\n\t 6 - BOUNCING BALL" << endl;
             std::cout << "\n\n\t 0 - EXIT " << endl;
-            std::cout << "\n\n\t -->"; std::cin  >> option;
+            std::cout << "\n\n\t -->  "; std::cin  >> option;
             
             switch (option) 
             {
@@ -250,7 +301,7 @@ int main(){
             case 2:
                 system("cls");
                 for (int i = 0; i < 3; i++){
-                    fantastic_car();
+                    Fantastic_Car();
                 }
                 std::cout<<"\n\n\t Fin de ejecucion."<<endl;
                 sleep(10000);	
@@ -259,7 +310,7 @@ int main(){
             case 3:
                 system("cls");
                  for (int i = 0; i < 3; i++){
-                    choque();
+                    Crash();
                 }
                 
                 std::cout<<"\n\n\t Fin de ejecucion."<<endl;
@@ -269,7 +320,7 @@ int main(){
             case 4:
                 system("cls");
                 for (int i = 0; i < 3; i++){
-                Loadbarerror();
+                LaKonga();
                 }
                 
                 std::cout<<"\n\n\t Fin de ejecucion."<<endl;
@@ -278,7 +329,7 @@ int main(){
             case 5:
                 system("cls");
                 for (int i = 0; i < 3; i++){
-                aceleradordeparticulas();
+                AceleradorDeParticulas();
                 }
                 
                 std::cout<<"\n\n\t Fin de ejecucion."<<endl;

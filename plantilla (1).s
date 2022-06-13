@@ -12,6 +12,8 @@ done: NOP            // dummy instruction for breakpoint
       MOV PC,L       // return from main
 
 .data
+
+
 array:
       .byte 0x08
       .byte 0x10

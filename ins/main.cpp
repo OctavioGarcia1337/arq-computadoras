@@ -184,6 +184,7 @@ unsigned char tabla []={0x0,0x80, 0xC0, 0xE0, 0xF0, 0xFC, 0xFE, 0xFF};
       }
   }
 }
+
 void ola_humana(unsigned long int speed){
   unsigned int pos = 0xE0;
   while(1){
@@ -222,6 +223,7 @@ void ola_humana(unsigned long int speed){
   }
 }
 }
+
 void auto_fantastico(unsigned long int speed){
   unsigned int pos = 0x80;
   while(1){
@@ -235,8 +237,7 @@ void auto_fantastico(unsigned long int speed){
     system("cls");
 
   if ((speed - 5000000) > 1000000){
-    if(GetAsyncKeyState(VK_UP) & 0x0001){speed -= 5000000;}
-    }
+    if(GetAsyncKeyState(VK_UP) & 0x0001){speed -= 5000000;}}
     if(GetAsyncKeyState(VK_DOWN) & 0x0001){speed += 5000000;}
     if(GetAsyncKeyState(VK_ESCAPE) & 0x0001){return;}
 
@@ -260,6 +261,7 @@ void auto_fantastico(unsigned long int speed){
     if(GetAsyncKeyState(VK_ESCAPE) & 0x0001){return;}
   }
 }
+
 }
 void choque (unsigned long int speed){
   unsigned char tabla[] = {0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42};
@@ -280,6 +282,8 @@ while(1){
  }
 }
 }
+
+
 void carrera (unsigned long int speed){
 unsigned char tabla[] = {
     0xA0,0x30,0x08,0x06,0x03,0x01};
