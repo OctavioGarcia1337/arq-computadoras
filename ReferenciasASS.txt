@@ -1,0 +1,27 @@
+	BOUNCINBALL
+	R0=PRINTER
+	R2=array.base
+	R3=array
+	R1=SPEED
+	R4=x
+	R5=z
+	R6=i
+
+
+
+
+
+
+	LAKONGA
+	R0=
+	R1=SPEED
+	R2=
+	R3=PRINTER
+	R4=v
+	R5=x
+	R6=z
+	R7=AUX
+	R8=
+
+	
+
